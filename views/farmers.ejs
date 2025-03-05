@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Farmers</title>
+  <%- include("partials/header") %> 
+</head>
+<body>
+  <div class="heading" style="display: flex; flex-direction: row;">
+    <h1 style="margin-left: 30rem; color: rgb(91, 119, 244);">Registered Farmers</h1>
+    <a href="/farmer-register" class="add-products-link" style="margin-left: 15rem;">Add Products</a>
+  </div>
+  <div class="farmer-container">
+    <% farmers.forEach(farmer => { %>
+      <div class="farmer-box">
+        <h2><%= farmer.name %></h2>
+        <p>Email: <%= farmer.email %></p>
+        <p>Address: <%= farmer.address %></p>
+        <!-- Button linking to farmer's products page -->
+        <a href="/farmer-products/<%= farmer.id %>">View Products</a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>

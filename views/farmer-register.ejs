@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farmer Sign Up</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f9f4; /* Soft green background */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #388e3c; /* Green heading */
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: #ffffff; /* White form background */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input:focus {
+      border-color: #388e3c;
+      outline: none;
+      box-shadow: 0 0 5px rgba(56, 142, 60, 0.5); /* Focus green glow */
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #388e3c;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2e7d32; /* Darker green on hover */
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #388e3c;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Farmer Sign Up</h1>
+  <form action="/farmer-register" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="address" placeholder="Address" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/farmer-signin">Sign In</a></p>
+</body>
+</html>

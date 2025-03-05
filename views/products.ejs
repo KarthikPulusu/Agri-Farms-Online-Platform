@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Products</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <%- include("partials/header") %>
+  <h1>All Products</h1>
+
+  <% if (typeof searchError !== 'undefined') { %>
+    <p class="search-error"><%= searchError %></p>
+  <% } %>
+
+  <div class="product-container">
+    <% products.forEach(product => { %>
+      <div id="product-<%= product.id %>" class="product-box">
+        <h2><%= product.name %></h2>
+        <p>Description: <%= product.description %></p>
+        <p>Price: $<%= product.price %></p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <p style="margin-left: 5.5rem;">Stock: <%= product.stock %></p>
+          <div>
+            <a href="#" class="product-icon wishlist" onclick="addToWishlist(<%= product.id %>)">
+              <i class="fa-regular fa-heart"></i>
+            </a>
+            <a href="#" class="product-icon cart" onclick="addToCart(<%= product.id %>)">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            
+          </div>
+        </div>
+        <p>Farmer: <%= product.farmer_name %></p>
+      </div>
+    <% }) %>
+</div>
+
+<script>
+  function addToWishlist(productId) {
+    const customerId = 1; // Replace with the logged-in user's ID
+
+    // Send POST request to add product to wishlist
+    fetch('/add-to-wishlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId, userId: customerId }) // Replace customerId with logged-in user's ID
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Added to wishlist!');
+      } else {
+        alert('Failed to add to wishlist.');
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+  function addToCart(productId, productName, price) {
+  // Assuming customer details (customer_id and customer_name) are available in the session or as global variables
+  const customerId = sessionStorage.getItem('customer_id');
+  const customerName = sessionStorage.getItem('customer_name');
+
+
+  if (!customerId) {
+    alert('You must be logged in to add items to the cart.');
+    return;
+  }
+
+  // Construct the payload with all necessary data
+  const requestBody = {
+    customer_id: customerId,
+    customer_name: sessionStorage.getItem('customer_name'), // Or get this from another source
+    product_id: productId,
+    product_name: productName,
+    price: price
+  };
+
+  // Send the POST request to the server
+  fetch('/add_to_cart', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(requestBody),
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      alert(message);
+    })
+    .catch((err) => console.error('Error:', err));
+}
+
+</script>
+
+</html>

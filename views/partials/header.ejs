@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Agri Farms</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<div>
+  <div class="navbar">
+    <img src="/images/logo.png" class="logo" alt="logo image">
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="nav-links">
+      <a href="/products" class="nav-item">Products</a>
+      <a href="/farmers" class="nav-item">Farmers</a>
+      <form action="/product-search" method="get" class="nav-item search-form">
+        <input type="search" name="q" placeholder="Search Products" required>
+        <button type="submit"><i class="fa-solid fa-search"></i></button>
+      </form>
+
+      
+      <a href="/wishlist" class="nav-item"><i class="fa-solid fa-heart"></i></a>
+      <a href="/cart" class="nav-item"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="/profile" class="nav-item"><i class="fa-solid fa-user-shield"></i></a>
+    </div>
+  </div>
+</body>
+<script>
+  function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links'); 
+    navLinks.classList.toggle('active'); 
+    console.log("Toggle menu clicked!"); 
+  }
+</script>
